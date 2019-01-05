@@ -1,0 +1,13 @@
+target=hppa
+topdir=/usr/result
+srcdir=/usr/src
+destdir=${topdir}/dest.${target}
+objdir=${topdir}/obj.${target}
+toolsdir=${topdir}/tools.${target}
+
+buildme() {
+make -f Makefile.cross -j4 TARGET=${target} CROSSDIR=${destdir} cross-env && 
+make -f Makefile.cross -j4 TARGET=${target} CROSSDIR=${destdir} cross-dirs && 
+make -f Makefile.cross -j4 TARGET=${target} CROSSDIR=${destdir} cross-tools && 
+make -f Makefile.cross -j4 TARGET=${target} CROSSDIR=${destdir} cross-distrib
+}
